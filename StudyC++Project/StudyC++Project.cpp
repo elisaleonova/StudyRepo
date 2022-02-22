@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <memory>
 #include "Calculator.h"
 using namespace std;
 
@@ -14,7 +15,8 @@ int main()
     cout << "Calculator Console Application\n\n";
     cout << "Please enter the operation to perform. Format: a+b | a-b | a*b | a/b\n";
     
-    Calculator calc;
+    shared_ptr<Calculator> calc(new Calculator());
+    //Calculator calc;
     while (true) 
     {
         cin >> x >> oper >> y;
@@ -24,7 +26,8 @@ int main()
         }
         else
         {
-            res = calc.Calculate(x, oper, y);
+            //res = calc.Calculate(x, oper, y);
+            res = calc->Calculate(x, oper, y);
         }
         cout << "Result is:" << res << "\nPlease enter the operation to perform. Format: a+b | a-b | a*b | a/b\n";
     }
